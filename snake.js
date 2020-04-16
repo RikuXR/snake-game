@@ -27,6 +27,22 @@ let food = {
 // create the score
 let score = 0;
 
+// control the snake
+let d;
+document.addEventListener("keydown", direction);
+
+function direction(e) {
+  if (e.keyCode === 37) {
+    d = "left";
+  } else if (e.keyCode === 38) {
+    d = "up";
+  } else if (e.keyCode === 39) {
+    d = "right";
+  } else if (e.keyCode === 40) {
+    d = "down";
+  }
+}
+
 // draw everything
 function draw() {
   ctx.drawImage(ground, 0, 0);
