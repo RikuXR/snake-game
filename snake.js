@@ -32,13 +32,13 @@ let d;
 document.addEventListener("keydown", direction);
 
 function direction(e) {
-  if (e.keyCode === 37) {
+  if (e.keyCode === 37 && d !== "right") {
     d = "left";
-  } else if (e.keyCode === 38) {
+  } else if (e.keyCode === 38 && d !== "down") {
     d = "up";
-  } else if (e.keyCode === 39) {
+  } else if (e.keyCode === 39 && d !== "left") {
     d = "right";
-  } else if (e.keyCode === 40) {
+  } else if (e.keyCode === 40 && d !== "up") {
     d = "down";
   }
 }
