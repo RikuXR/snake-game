@@ -64,8 +64,17 @@ function draw() {
   if (d === "right") snakeX += box;
   if (d === "down") snakeY += box;
 
-  // remove the tail
-  snake.pop();
+  // eat food
+  if (snakeX === food.x && snakeY === food.y) {
+    score++;
+    food = {
+      x: Math.floor(Math.random() * 17 + 1) * box,
+      y: Math.floor(Math.random() * 15 + 3) * box,
+    };
+  } else {
+    // remove the tail
+    snake.pop();
+  }
 
   // add new head
   snake.unshift({ x: snakeX, y: snakeY });
