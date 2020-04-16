@@ -11,6 +11,12 @@ ground.src = "img/ground.png";
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 
+// load audio
+let dead = new Audio();
+dead.src = "audio/dead.mp3";
+let eat = new Audio();
+eat.src = "audio/eat.mp3";
+
 // create the snake
 let snake = [];
 snake[0] = {
@@ -76,10 +82,13 @@ function draw() {
   // eat food
   if (snakeX === food.x && snakeY === food.y) {
     score++;
+
     food = {
       x: Math.floor(Math.random() * 17 + 1) * box,
       y: Math.floor(Math.random() * 15 + 3) * box,
     };
+
+    eat.play();
   } else {
     // remove the tail
     snake.pop();
@@ -100,6 +109,7 @@ function draw() {
     collision(newHead, snake)
   ) {
     clearInterval(game);
+    dead.play();
   }
 
   // add new head
