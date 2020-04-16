@@ -11,4 +11,9 @@ ground.src = "img/ground.png";
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 
-console.log(foodImg);
+// create the snake
+let snake = [];
+snake[0] = {
+  x: 9 * box,
+  y: 10 * box,
+};
