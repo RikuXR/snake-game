@@ -11,6 +11,9 @@ ground.src = "img/ground.png";
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 
+const headImg = new Image();
+headImg.src = "img/head.jpg";
+
 // load audio
 let dead = new Audio();
 dead.src = "audio/dead.mp3";
@@ -63,11 +66,16 @@ function draw() {
   ctx.drawImage(ground, 0, 0);
 
   for (let i = 0; i < snake.length; i++) {
-    ctx.fillStyle = i == 0 ? "green" : "white";
-    ctx.fillRect(snake[i].x, snake[i].y, box, box);
+    if (i === 0) {
+      ctx.drawImage(headImg, snake[i].x, snake[i].y, 32, 32);
+    } else {
+      ctx.fillStyle = "lightgray";
+
+      ctx.fillRect(snake[i].x, snake[i].y, box, box);
+    }
   }
 
-  ctx.drawImage(foodImg, food.x, food.y);
+  ctx.drawImage(foodImg, food.x, food.y, 32, 32);
 
   // old head position
   let snakeX = snake[0].x,
