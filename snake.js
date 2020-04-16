@@ -54,6 +54,22 @@ function draw() {
 
   ctx.drawImage(foodImg, food.x, food.y);
 
+  // old head position
+  let snakeX = snake[0].x,
+    snakeY = snake[0].y;
+
+  // change snake coordinates
+  if (d === "left") snakeX -= box;
+  if (d === "up") snakeY -= box;
+  if (d === "right") snakeX += box;
+  if (d === "down") snakeY += box;
+
+  // remove the tail
+  snake.pop();
+
+  // add new head
+  snake.unshift({ x: snakeX, y: snakeY });
+
   ctx.fillStyle = "white";
   ctx.font = "37px Arial";
   ctx.fillText(score, 2 * box, 1.6 * box);
